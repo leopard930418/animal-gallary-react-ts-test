@@ -22,9 +22,9 @@ const CustomSlider = styled(Slider)(({ theme }) => ({
     opacity: 0.3,
     height: HEIGHT,
   },
-  "& .MuiSlider-mark": {
-    display: "none",
-  },
+  "& .MuiSlider-mark":{
+    display:"none",
+  }
 }));
 
 export default CustomSlider;

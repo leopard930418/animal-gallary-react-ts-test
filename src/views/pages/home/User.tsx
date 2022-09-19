@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import UserInfoCard from "./UserInfoCard";
 
+import axios from "axios";
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -23,8 +25,8 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+        <Box sx={{ p: 1 }}>
+          <div>{children}</div>
         </Box>
       )}
     </div>
@@ -45,41 +47,48 @@ export default function User() {
     setValue(newValue);
   };
 
+  const [userData, setUserData] = React.useState([]);
+  React.useEffect(() => {
+    axios({
+      method: "get",
+      url: "https://avl-frontend-exam.herokuapp.com/api/users/all?page=1&pageSize=10",
+    })
+      .then((res) => {
+        setUserData(res?.data?.data);
+        console.log(res.data.data);
+      })
+      .catch((error) => console.error(`Error ${error}`));
+    return () => {};
+  }, []);
+
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-          variant="fullWidth"
-        >
-          <Tab label="Followers" {...a11yProps(0)} />
-          <Tab label="Following" {...a11yProps(1)} />
-        </Tabs>
+    <>
+      <Box sx={{ width: "100%" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+            variant="fullWidth"
+          >
+            <Tab label="Followers" {...a11yProps(0)} />
+            <Tab label="Following" {...a11yProps(1)} />
+          </Tabs>
+        </Box>
+        <>
+          <TabPanel value={value} index={0}>
+            {userData.map((item: any) => (
+              <UserInfoCard
+                avatar={item?.avater}
+                name={item?.name}
+                username={item?.username}
+                isFollowing={item?.isFollowing}
+              />
+            ))}
+          </TabPanel>
+        </>
+        <TabPanel value={value} index={1}></TabPanel>
       </Box>
-      <TabPanel value={value} index={0}>
-        <UserInfoCard />
-        <UserInfoCard />
-        <UserInfoCard />
-        <UserInfoCard isfollowing />
-        <UserInfoCard />
-        <UserInfoCard />
-        <UserInfoCard isfollowing />
-        <UserInfoCard />
-        <UserInfoCard />
-        <UserInfoCard />
-        <UserInfoCard />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <UserInfoCard isfollowing />
-        <UserInfoCard isfollowing />
-        <UserInfoCard isfollowing />
-        <UserInfoCard isfollowing />
-        <UserInfoCard isfollowing />
-        <UserInfoCard isfollowing />
-        <UserInfoCard isfollowing />
-      </TabPanel>
-    </Box>
+    </>
   );
 }
