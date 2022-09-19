@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.css-llennx-MuiTabs-indicator {
+    background-color: white !important;
+    height: 2px !important;
+}
+
+.css-1wbq1kq-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    color: white !important;
+}
+.css-1wbq1kq-MuiButtonBase-root-MuiTab-root {
+    text-transform: none !important;
+    font-family: Arial !important;
+}

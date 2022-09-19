@@ -1,5 +1,6 @@
 import { Divider, Stack, TextField, Typography } from "@mui/material";
 import CustomSlider from "../../components/CustomSlider";
+import User from "./User";
 
 const marks = [
   {
@@ -25,30 +26,38 @@ const marks = [
 ];
 
 function valuetext(value: number) {
-  return `${value}°C`;
+  return `${value}`;
 }
 
 export default function Home() {
   return (
-    <Stack spacing={2}>
-      <Typography variant="h5">Search</Typography>
-      <TextField placeholder="Keyword" fullWidth />
-      <Divider className="my-7" />
-      <Typography variant="h5" className="m-0">
-        # Of Result Per Page
-      </Typography>
-      <Typography variant="h3" component="div">
-        30 <Typography component="span">results</Typography>
-      </Typography>
+    <div className="w-full flex flex-row">
+      <div className="w-2/3 px-32 pt-12">
+        <Stack spacing={2}>
+          <Typography variant="h5">Search</Typography>
+          <TextField placeholder="Keyword" fullWidth />
+          <Divider className="my-7" />
+          <Typography variant="h5" className="m-0">
+            # Of Result Per Page
+          </Typography>
+          <Typography variant="h3" component="div">
+            30 <Typography component="span">results</Typography>
+          </Typography>
 
-      <CustomSlider
-        aria-label="Custom marks"
-        defaultValue={20}
-        step={20}
-        valueLabelDisplay="auto"
-        getAriaValueText={valuetext}
-        marks={marks}
-      />
-    </Stack>
+          <CustomSlider
+            aria-label="Custom marks"
+            defaultValue={20}
+            step={20}
+            valueLabelDisplay="off"
+            getAriaValueText={valuetext}
+            marks={marks}
+          />
+          <Divider className="my-10"></Divider>
+        </Stack>
+      </div>
+      <div className="w-1/3 px-12 pt-8">
+        <User />
+      </div>
+    </div>
   );
 }
