@@ -4,19 +4,23 @@ import CustomSlider from "../../components/CustomSlider";
 const marks = [
   {
     value: 0,
-    label: "0°C",
+    label: "3",
   },
   {
     value: 20,
-    label: "20°C",
+    label: "6",
   },
   {
-    value: 37,
-    label: "37°C",
+    value: 40,
+    label: "9",
+  },
+  {
+    value: 60,
+    label: "12",
   },
   {
     value: 100,
-    label: "100°C",
+    label: "50",
   },
 ];
 
@@ -40,7 +44,7 @@ export default function Home() {
       <CustomSlider
         aria-label="Custom marks"
         defaultValue={20}
-        step={10}
+        step={20}
         valueLabelDisplay="auto"
         getAriaValueText={valuetext}
         marks={marks}
