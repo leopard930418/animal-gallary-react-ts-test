@@ -53,6 +53,12 @@ export default function Home() {
             marks={marks}
           />
           <Divider className="my-10"></Divider>
+
+          <div className="w-1/2 fixed bottom-20">
+            <div className="w-1/2 rounded-md bg-white text-black text-xl font-semibold text-center py-3">
+              SEARCH
+            </div>
+          </div>
         </Stack>
       </div>
       <div className="w-1/3 px-12 pt-8">
