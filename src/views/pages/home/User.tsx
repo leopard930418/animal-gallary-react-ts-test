@@ -1,7 +1,7 @@
+/* eslint-disable array-callback-return */
 import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import UserInfoCard from "./UserInfoCard";
 
@@ -48,14 +48,22 @@ export default function User() {
   };
 
   const [userData, setUserData] = React.useState([]);
+  const [followingData, setFollowingData] = React.useState([]);
   React.useEffect(() => {
     axios({
       method: "get",
       url: "https://avl-frontend-exam.herokuapp.com/api/users/all?page=1&pageSize=10",
     })
       .then((res) => {
-        setUserData(res?.data?.data);
-        console.log(res.data.data);
+        const allData = res?.data?.data;
+        setUserData(allData);
+        const followData: any = [];
+        allData.map((item: any) => {
+          if (item.isFollowing === true) {
+            followData.push(item);
+          }
+          setFollowingData(followData);
+        });
       })
       .catch((error) => console.error(`Error ${error}`));
     return () => {};
@@ -77,17 +85,28 @@ export default function User() {
         </Box>
         <>
           <TabPanel value={value} index={0}>
-            {userData.map((item: any) => (
+            {userData.map((item: any, index: number) => (
               <UserInfoCard
                 avatar={item?.avater}
                 name={item?.name}
                 username={item?.username}
                 isFollowing={item?.isFollowing}
+                key={index}
               />
             ))}
           </TabPanel>
         </>
-        <TabPanel value={value} index={1}></TabPanel>
+        <TabPanel value={value} index={1}>
+          {followingData.map((item: any, index: number) => (
+            <UserInfoCard
+              avatar={item?.avater}
+              name={item?.name}
+              username={item?.username}
+              isFollowing={item?.isFollowing}
+              key={index}
+            />
+          ))}
+        </TabPanel>
       </Box>
     </>
   );

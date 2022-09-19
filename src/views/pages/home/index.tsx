@@ -32,7 +32,7 @@ function valuetext(value: number) {
 export default function Home() {
   return (
     <div className="w-full flex flex-row">
-      <div className="w-2/3 px-32 pt-12">
+      <div className="w-full lg:w-2/3 px-32 pt-12">
         <Stack spacing={2}>
           <Typography variant="h5">Search</Typography>
           <TextField placeholder="Keyword" fullWidth />
@@ -54,14 +54,14 @@ export default function Home() {
           />
           <Divider className="my-10"></Divider>
 
-          <div className="w-1/2 fixed bottom-20">
-            <div className="w-1/2 rounded-md bg-white text-black text-xl font-bold text-center py-3">
+          <div className="fixed bottom-20">
+            <div className="cursor-pointer w-[335px] rounded-md bg-white text-black hover:text-white hover:bg-black hover:border hover:border-white text-sm font-bold text-center py-3">
               SEARCH
             </div>
           </div>
         </Stack>
       </div>
-      <div className="w-1/3 px-2 pt-8">
+      <div className="w-full lg:w-1/3 px-2 pt-8">
         <User />
       </div>
     </div>

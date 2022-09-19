@@ -1,4 +1,5 @@
 import React from "react";
+import ImageWithFallback from "../../components/ImageWithFallback";
 
 export default function UserInfoCard({
   name = "",
@@ -6,12 +7,19 @@ export default function UserInfoCard({
   avatar = "",
   isFollowing = false,
 }) {
+
   return (
     <>
       <div className="flex flex-row justify-between p-2">
         <div className="flex flex-row space-x-4">
           <div className="rounded-md border-2 border-white">
-            <img src={avatar} alt="userAvatar" />
+            <ImageWithFallback
+              fallbackSrc={"/images/User1.svg"}
+              src={avatar}
+              alt="userAvatar"
+              width={40}
+              height={40}
+            />
           </div>
           <div className="flex flex-col">
             <div className="text-base text-white">{name}</div>
@@ -22,11 +30,11 @@ export default function UserInfoCard({
         </div>
         <div>
           {isFollowing ? (
-            <button className="border border-white px-4 py-1 rounded-full bg-white text-black text-xs">
+            <button className="border border-white px-4 py-1 rounded-full bg-white text-black  hover:text-white hover:bg-black hover:border hover:border-white text-xs">
               Following
             </button>
           ) : (
-            <button className="border border-white px-4 py-1 rounded-full text-white text-xs">
+            <button className="border border-white px-4 py-1 rounded-full text-white  hover:text-black hover:bg-white hover:border hover:border-black text-xs">
               Follow
             </button>
           )}
