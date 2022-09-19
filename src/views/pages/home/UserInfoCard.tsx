@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function UserInfoCard() {
+export default function UserInfoCard({ isfollowing = false }) {
   return (
     <>
       <div className="flex flex-row justify-between p-2">
@@ -14,9 +14,15 @@ export default function UserInfoCard() {
           </div>
         </div>
         <div>
-          <button className="border border-white px-4 py-1 rounded-full">
-            Follow
-          </button>
+          {isfollowing ? (
+            <button className="border border-white px-4 py-1 rounded-full bg-white text-black">
+              Following
+            </button>
+          ) : (
+            <button className="border border-white px-4 py-1 rounded-full">
+              Follow
+            </button>
+          )}
         </div>
       </div>
     </>

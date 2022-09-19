@@ -62,17 +62,23 @@ export default function User() {
         <UserInfoCard />
         <UserInfoCard />
         <UserInfoCard />
+        <UserInfoCard isfollowing />
         <UserInfoCard />
         <UserInfoCard />
-        <UserInfoCard />
-        <UserInfoCard />
+        <UserInfoCard isfollowing />
         <UserInfoCard />
         <UserInfoCard />
         <UserInfoCard />
         <UserInfoCard />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <UserInfoCard isfollowing />
+        <UserInfoCard isfollowing />
+        <UserInfoCard isfollowing />
+        <UserInfoCard isfollowing />
+        <UserInfoCard isfollowing />
+        <UserInfoCard isfollowing />
+        <UserInfoCard isfollowing />
       </TabPanel>
     </Box>
   );
