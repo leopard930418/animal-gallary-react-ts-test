@@ -1,7 +1,7 @@
 import { Divider, Stack, TextField, Typography } from "@mui/material";
 import CustomSlider from "../../components/CustomSlider";
 import User from "./User";
-
+import { useNavigate } from "react-router-dom";
 const marks = [
   {
     value: 0,
@@ -30,6 +30,7 @@ function valuetext(value: number) {
 }
 
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <div className="w-full flex flex-row">
       <div className="w-full lg:w-2/3 px-32 pt-12">
@@ -55,7 +56,10 @@ export default function Home() {
           <Divider className="my-10"></Divider>
 
           <div className="fixed bottom-20">
-            <div className="cursor-pointer w-[335px] rounded-md bg-white text-black hover:text-white hover:bg-black hover:border hover:border-white text-sm font-bold text-center py-3">
+            <div
+              className="cursor-pointer w-[335px] rounded-md bg-white text-black hover:text-white hover:bg-black hover:border hover:border-white text-sm font-bold text-center py-3"
+              onClick={() => navigate("/result")}
+            >
               SEARCH
             </div>
           </div>

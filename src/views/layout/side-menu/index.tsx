@@ -24,8 +24,8 @@ export default function SideMenu() {
       </Toolbar>
 
       <Stack>
-        <SideMenuButton icon={<ContentCopy />} label="Home" isActive={true} />
-        <SideMenuButton icon={<ContentCopy />} label="Tags" isBadge={true} />
+        <SideMenuButton icon={<ContentCopy />} label="Home" isActive={true} pathname="home"/>
+        <SideMenuButton icon={<ContentCopy />} label="Tags" isBadge={true} pathname="tags"/>
       </Stack>
     </Drawer>
   );

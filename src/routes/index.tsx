@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "../views/layout";
 import Home from "../views/pages/home";
+import Result from "../views/pages/result";
+import Tags from "../views/pages/tags";
 
 export default function Root() {
   return (
@@ -9,6 +11,8 @@ export default function Root() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="home" element={<Home />} />
+          <Route path="result" element={<Result />} />
+          <Route path="tags" element={<Tags />} />
         </Route>
       </Routes>
     </BrowserRouter>
