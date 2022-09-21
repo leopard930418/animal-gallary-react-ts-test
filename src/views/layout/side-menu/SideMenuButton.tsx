@@ -1,5 +1,5 @@
 import { Badge } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 interface SideMenuButtonProps {
   icon?: React.ReactElement | null;
@@ -17,25 +17,27 @@ export default function SideMenuButton({
   pathname = "",
 }: SideMenuButtonProps) {
   const navigation = useNavigate();
+  const [isHover, setIsHover] = useState(false);
+
   return (
     <div
       className={
-        "flex flex-col justify-center items-center cursor-pointer m-2 text-white"
+        isActive
+          ? "flex flex-col justify-center items-center cursor-pointer m-2 text-white"
+          : "flex flex-col justify-center items-center cursor-pointer m-2 text-white opacity-60 hover:opacity-100"
       }
       onClick={() => navigation(`/${pathname}`)}
+      onMouseOver={() => setIsHover(true)}
+      onMouseOut={() => setIsHover(false)}
     >
       <Badge color="info" variant="dot" invisible={!isBadge}>
-        <div
-          className={
-            isActive
-              ? "opacity-100 hover:opacity-80"
-              : "opacity-60 hover:opacity-80"
-          }
-        >
-          {icon}
-        </div>
+        <div className="">{icon}</div>
       </Badge>
-      <div className="text-xs">{label}</div>
+      {isActive || isHover ? (
+        <div className="text-xs">{label}</div>
+      ) : (
+        <div className="text-xs text-transparent">{label}</div>
+      )}
     </div>
   );
 }
