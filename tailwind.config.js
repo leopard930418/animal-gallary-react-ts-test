@@ -11,6 +11,9 @@ module.exports = {
         "medium-black": "#181818",
         "dark-black": "#121212",
       },
+      screens: {
+        "xl-max": { min: "1440px" },
+      },
     },
   },
   plugins: [],

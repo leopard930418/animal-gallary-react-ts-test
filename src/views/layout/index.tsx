@@ -10,7 +10,7 @@ export default function Layout() {
       <Header />
       <div className="">
         <SideMenu />
-        <div className="ml-20">
+        <div className="ml-0 sm:ml-20">
           <Container>
             <Outlet />
           </Container>

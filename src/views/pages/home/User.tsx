@@ -1,5 +1,4 @@
-/* eslint-disable array-callback-return */
-import * as React from "react";
+import React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
@@ -59,10 +58,10 @@ export default function User() {
         setUserData(allData);
         const followData: any = [];
         allData.map((item: any) => {
-          if (item.isFollowing === true) {
+          if (item?.isFollowing === true) {
             followData.push(item);
           }
-          setFollowingData(followData);
+          return setFollowingData(followData);
         });
       })
       .catch((error) => console.error(`Error ${error}`));
@@ -83,19 +82,17 @@ export default function User() {
             <Tab label="Following" {...a11yProps(1)} />
           </Tabs>
         </Box>
-        <>
-          <TabPanel value={value} index={0}>
-            {userData.map((item: any, index: number) => (
-              <UserInfoCard
-                avatar={item?.avater}
-                name={item?.name}
-                username={item?.username}
-                isFollowing={item?.isFollowing}
-                key={index}
-              />
-            ))}
-          </TabPanel>
-        </>
+        <TabPanel value={value} index={0}>
+          {userData.map((item: any, index: number) => (
+            <UserInfoCard
+              avatar={item?.avater}
+              name={item?.name}
+              username={item?.username}
+              isFollowing={item?.isFollowing}
+              key={index}
+            />
+          ))}
+        </TabPanel>
         <TabPanel value={value} index={1}>
           {followingData.map((item: any, index: number) => (
             <UserInfoCard

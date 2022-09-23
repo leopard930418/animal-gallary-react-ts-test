@@ -49,3 +49,7 @@
     text-transform: none !important;
     font-family: Arial !important;
 }
+
+.css-i1153f-MuiPaper-root-MuiDrawer-paper {
+  background-image:none !important;
+}

@@ -12,8 +12,8 @@ const ImageWithFallback = ({
   src: string;
   fallbackSrc: string;
   alt?: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   [key: string]: any;
 }) => {
   const imgRef = React.useRef<HTMLImageElement>(null);
