@@ -1,8 +1,7 @@
 import { useState } from "react";
 import User from "./User";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { Drawer, paperClasses } from "@mui/material";
-import { minWidth } from "@mui/system";
+import { Drawer } from "@mui/material";
 
 export default function UserDrawer() {
   const [isShow, setIsShow] = useState(false);
@@ -15,7 +14,7 @@ export default function UserDrawer() {
         <User />
       </div>
       <div
-        className="cursor-pointer fixed top-12 right-0 bg-white bg-opacity-10 rounded-l-xl block xl-max:hidden pl-4 py-4"
+        className="cursor-pointer fixed top-12 right-0 bg-white bg-opacity-10 rounded-l-xl hidden sm:block xl-max:hidden pl-4 py-4"
         onClick={handleToggle}
       >
         <ArrowBackIosIcon fontSize="large" style={{ color: "white" }} />

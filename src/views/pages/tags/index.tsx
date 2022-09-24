@@ -26,7 +26,7 @@ export default function Tags() {
   //   { tagName: "Tag", resultCount: 50 },
   // ];
   const [tagsData, setTagsData] = useState([]);
-  const isPhoneMode = useMediaQuery("(max-width:600px)");
+  const isPhoneMode = useMediaQuery("(max-width:640px)");
   const navigation = useNavigate();
 
   useEffect(() => {

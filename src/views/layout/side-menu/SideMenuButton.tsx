@@ -31,7 +31,8 @@ export default function SideMenuButton({
       onMouseOut={() => setIsHover(false)}
     >
       <Badge color="info" variant="dot" invisible={!isBadge}>
-        <div className="">{icon}</div>
+        {/* <div className="">{icon}</div> */}
+        <img src="/images/homeIcon.svg" alt="icon" />
       </Badge>
       {isActive || isHover ? (
         <div className="text-xs">{label}</div>

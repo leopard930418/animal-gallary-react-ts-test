@@ -7,7 +7,7 @@ export default function ResultCard({
   title = "This is a title",
   username = "by username",
 }) {
-  const isPhoneMode = useMediaQuery("(max-width:600px)");
+  const isPhoneMode = useMediaQuery("(max-width:640px)");
 
   return (
     <>

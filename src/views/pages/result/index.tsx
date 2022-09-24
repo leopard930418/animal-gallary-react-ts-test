@@ -17,7 +17,7 @@ export default function Result() {
   const [resultData, setResultData] = useState([]);
   const [pageNum, setPageNum] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const isPhoneMode = useMediaQuery("(max-width:600px)");
+  const isPhoneMode = useMediaQuery("(max-width:640px)");
 
   useEffect(() => {
     axios({
@@ -30,7 +30,7 @@ export default function Result() {
         setHasMore(res.data.totalPages > pageNum);
       })
       .catch((err) => console.log(err));
-  }, [pageNum, searchKeyword]);
+  }, []);
 
   const fetchMoreData = () => {
     setPageNum(pageNum + 1);
@@ -52,7 +52,7 @@ export default function Result() {
         <div className="w-full flex flex-row">
           <div className="w-full xl-max:w-2/3 px-32 pt-12">
             <Stack spacing={2}>
-              <div className="flex flex-row items-center">
+              <div className="flex flex-row items-center ml-[-12px]">
                 <ArrowBackIosIcon
                   fontSize="medium"
                   style={{ color: "white" }}
@@ -66,7 +66,7 @@ export default function Result() {
                 next={fetchMoreData}
                 hasMore={hasMore}
                 loader={<h4>Loading...</h4>}
-                height={600}
+                height={700}
               >
                 <Grid container>
                   {resultData.map((items: any, index: number) => (
@@ -108,7 +108,7 @@ export default function Result() {
             next={fetchMoreData}
             hasMore={hasMore}
             loader={<h4>Loading...</h4>}
-            height={600}
+            height={700}
           >
             <Grid container justifyContent={"center"}>
               {resultData.map((items: any, index: number) => (

@@ -8,21 +8,18 @@ export const DRAWER_WIDTH = 80;
 
 export default function SideMenu() {
   const pathname = useLocation();
-  const isPhoneMode = useMediaQuery("(max-width:600px)");
+  const isPhoneMode = useMediaQuery("(max-width:640px)");
 
   return (
     <>
-      {console.log(
-        "test",
-        pathname.pathname === "/" || pathname.pathname === "/home"
-      )}
       {isPhoneMode ? (
         <div>
           {(pathname.pathname === "/" || pathname.pathname === "/home") && (
-            <div className="fixed top-0 w-full bg-[#181818] justify-start items-center">
-              <Toolbar>
-                <Logo />
-              </Toolbar>
+            <div className="fixed top-0 w-full h-[70px] bg-[#181818] flex justify-start items-center">
+              <div className="pl-4">
+                {/* <Logo /> */}
+                <img src="/logo.svg" alt="logo" className="h-5"></img>
+              </div>
             </div>
           )}
         </div>
@@ -40,12 +37,13 @@ export default function SideMenu() {
           anchor="left"
         >
           <Toolbar>
-            <Logo />
+            {/* <Logo /> */}
+            <img src="/logo.svg" alt="logo"></img>
           </Toolbar>
 
           <Stack>
             <SideMenuButton
-              icon={<ContentCopy />}
+              // icon={<ContentCopy />}
               label="Home"
               isActive={
                 pathname.pathname === "/home" ||
@@ -57,7 +55,7 @@ export default function SideMenu() {
               pathname="home"
             />
             <SideMenuButton
-              icon={<ContentCopy />}
+              // icon={<ContentCopy />}
               label="Tags"
               isActive={pathname.pathname === "/tags" ? true : false}
               isBadge={true}

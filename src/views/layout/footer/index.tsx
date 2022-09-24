@@ -6,7 +6,7 @@ import SideMenuButton from "../side-menu/SideMenuButton";
 
 export default function Footer() {
   const pathname = useLocation();
-  const isPhoneMode = useMediaQuery("(max-width:600px)");
+  const isPhoneMode = useMediaQuery("(max-width:640px)");
   return (
     <div>
       {isPhoneMode ? (
