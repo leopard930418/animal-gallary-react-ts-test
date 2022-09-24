@@ -20,8 +20,16 @@ const ImageWithFallback = ({
   const [loading, setLoading] = React.useState(true);
 
   return (
-    <>
-      {loading && <Skeleton animation="wave" width={width} height={height} />}
+    <div className="w-full">
+      {loading && (
+        <Skeleton
+          animation="wave"
+          width={width}
+          height={height}
+          component="div"
+          sx={{ transform: "scale(1)" }}
+        />
+      )}
       <img
         src={src}
         onError={() => {
@@ -32,12 +40,12 @@ const ImageWithFallback = ({
         alt={alt || src}
         ref={imgRef}
         onLoad={() => setLoading(false)}
-        style={{display: loading ? 'none': 'block'}}
+        style={{ display: loading ? "none" : "block" }}
         width={width}
         height={height}
         {...props}
       />
-    </>
+    </div>
   );
 };
 

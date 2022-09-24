@@ -12,8 +12,10 @@ import UserDrawer from "../home/UserDrawer";
 export default function Result() {
   const navigation = useNavigate();
   const location = useLocation();
-  const Keyword: string = location.state;
+  const Keyword: string = location.state.keyword;
+  const Count: number = location.state.count;
   const searchKeyword = Keyword;
+  const pageCount = Count;
   const [resultData, setResultData] = useState([]);
   const [pageNum, setPageNum] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -22,10 +24,9 @@ export default function Result() {
   useEffect(() => {
     axios({
       method: "get",
-      url: `https://avl-frontend-exam.herokuapp.com/api/users/all?page=${pageNum}&pageSize=12&keyword=${searchKeyword}`,
+      url: `https://avl-frontend-exam.herokuapp.com/api/users/all?page=${pageNum}&pageSize=${pageCount}&keyword=${searchKeyword}`,
     })
       .then((res) => {
-        console.log("return", res);
         setResultData(res.data.data);
         setHasMore(res.data.totalPages > pageNum);
       })
@@ -36,7 +37,7 @@ export default function Result() {
     setPageNum(pageNum + 1);
     axios({
       method: "get",
-      url: `https://avl-frontend-exam.herokuapp.com/api/users/all?page=${pageNum}&pageSize=12&keyword=${searchKeyword}`,
+      url: `https://avl-frontend-exam.herokuapp.com/api/users/all?page=${pageNum}&pageSize=${pageCount}&keyword=${searchKeyword}`,
     })
       .then((res) => {
         const moreData = res?.data?.data;

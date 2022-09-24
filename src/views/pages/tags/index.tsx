@@ -42,7 +42,7 @@ export default function Tags() {
   return (
     <>
       {isPhoneMode ? (
-        <div className="fixed top-0 left-0 overflow-auto">
+        <div className="fixed top-0 left-0">
           <div className="flex flex-row items-center p-4">
             <ArrowBackIosIcon
               fontSize="medium"
@@ -55,27 +55,41 @@ export default function Tags() {
           <div className="px-4 py-4">
             <Typography variant="h5">Tags</Typography>
           </div>
-
-          <Grid container spacing={2} justifyContent="center">
-            {tagsData.map((items: any, index: number) => (
-              <Grid item lg={6} key={index}>
-                <TagCard tagName={items.name} resultCount={items.count} />
-              </Grid>
-            ))}
-          </Grid>
+          <div className="overflow-scroll h-[85vh]">
+            <Grid container spacing={2} justifyContent="center">
+              {tagsData.map((items: any, index: number) => (
+                <Grid
+                  item
+                  xs={6}
+                  sm={6}
+                  key={index}
+                  className="flex justify-center"
+                >
+                  <TagCard tagName={items.name} resultCount={items.count} />
+                </Grid>
+              ))}
+            </Grid>
+          </div>
         </div>
       ) : (
         <div className="w-full flex flex-row">
           <div className="w-full px-32 pt-12">
             <Stack spacing={2}>
               <Typography variant="h5">Tags</Typography>
-              <Grid container columns={10} rowSpacing={2}>
+              {/* <Grid container columns={10} rowSpacing={2}>
                 {tagsData.map((items: any, index: number) => (
                   <Grid item lg={2} key={index}>
                     <TagCard tagName={items.name} resultCount={items.count} />
                   </Grid>
                 ))}
-              </Grid>
+              </Grid> */}
+              <div className="grid grid-cols-2  lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                {tagsData.map((items: any, index: number) => (
+                  <div key={index}>
+                    <TagCard tagName={items.name} resultCount={items.count} />
+                  </div>
+                ))}
+              </div>
             </Stack>
           </div>
         </div>

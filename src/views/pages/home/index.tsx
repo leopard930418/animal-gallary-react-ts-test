@@ -37,7 +37,7 @@ function valuetext(value: number) {
 export default function Home() {
   const navigate = useNavigate();
   const [searchKeyword, setSearchKeyword] = useState("");
-  // const [resultCount, setResultCount] = useState(0);
+  const [resultCount, setResultCount] = useState(12);
   return (
     <div className="w-full flex flex-row flex-grow">
       <div className="w-full xl-max:w-2/3 px-4 sm:px-32 pt-20 sm:pt-12 flex flex-col justify-between flex-grow">
@@ -59,12 +59,12 @@ export default function Home() {
             # Of Result Per Page
           </Typography>
           <Typography variant="h3" component="div">
-            {30} <Typography component="span">results</Typography>
+            {resultCount} <Typography component="span">results</Typography>
           </Typography>
 
           <CustomSlider
             aria-label="Custom marks"
-            defaultValue={6}
+            defaultValue={12}
             step={3}
             min={3}
             max={18}
@@ -73,7 +73,7 @@ export default function Home() {
             // value={resultCount}
             marks={marks}
             onChange={(event: Event) => {
-              // setResultCount(event.target :EventTarget | null ?.value);
+              setResultCount((event.target as any)?.value);
             }}
           />
           <Divider className="mt-60 sm:my-10"></Divider>
@@ -82,7 +82,11 @@ export default function Home() {
           <div className="w-full">
             <div
               className="cursor-pointer w-full sm:w-1/2 rounded-md bg-white text-black hover:text-white hover:bg-black hover:border hover:border-white text-sm font-bold text-center py-3"
-              onClick={() => navigate("/result", { state: searchKeyword })}
+              onClick={() =>
+                navigate("/result", {
+                  state: { keyword: searchKeyword, count: resultCount },
+                })
+              }
             >
               SEARCH
             </div>
