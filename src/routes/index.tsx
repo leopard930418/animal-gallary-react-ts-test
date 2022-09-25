@@ -3,6 +3,7 @@ import Layout from "../views/layout";
 import Home from "../views/pages/home";
 import Result from "../views/pages/result";
 import Tags from "../views/pages/tags";
+import Test from "../views/pages/test";
 
 export default function Root() {
   return (
@@ -13,6 +14,7 @@ export default function Root() {
           <Route path="home" element={<Home />} />
           <Route path="result" element={<Result />} />
           <Route path="tags" element={<Tags />} />
+          <Route path="test" element={<Test />} />
         </Route>
       </Routes>
     </BrowserRouter>

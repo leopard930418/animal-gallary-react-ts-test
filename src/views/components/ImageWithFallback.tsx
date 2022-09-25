@@ -7,6 +7,7 @@ const ImageWithFallback = ({
   alt,
   width,
   height,
+  onLoad = () => {},
   ...props
 }: {
   src: string;
@@ -39,7 +40,10 @@ const ImageWithFallback = ({
         }}
         alt={alt || src}
         ref={imgRef}
-        onLoad={() => setLoading(false)}
+        onLoad={() => {
+          onLoad();
+          setLoading(false);
+        }}
         style={{ display: loading ? "none" : "block" }}
         width={width}
         height={height}

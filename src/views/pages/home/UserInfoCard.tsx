@@ -1,4 +1,5 @@
-import React from "react";
+import { Skeleton } from "@mui/material";
+import React, { useState } from "react";
 import ImageWithFallback from "../../components/ImageWithFallback";
 
 export default function UserInfoCard({
@@ -7,6 +8,7 @@ export default function UserInfoCard({
   avatar = "",
   isFollowing = false,
 }) {
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <>
@@ -19,13 +21,38 @@ export default function UserInfoCard({
               alt="userAvatar"
               width={40}
               height={40}
+              onLoad={() => setIsLoading(false)}
             />
           </div>
           <div className="flex flex-col">
-            <div className="text-base text-white">{name}</div>
-            <div className="text-sm text-white text-opacity-50">
-              @{username}
-            </div>
+            {isLoading ? (
+              <div className="py-1">
+                <Skeleton
+                  animation="wave"
+                  width={140}
+                  height={14}
+                  component="div"
+                  sx={{ transform: "scale(1)" }}
+                />
+              </div>
+            ) : (
+              <div className="text-base text-white">{name}</div>
+            )}
+            {isLoading ? (
+              <div className="py-1">
+                <Skeleton
+                  animation="wave"
+                  width={100}
+                  height={10}
+                  component="div"
+                  sx={{ transform: "scale(1)" }}
+                />
+              </div>
+            ) : (
+              <div className="text-sm text-white text-opacity-50">
+                @{username}
+              </div>
+            )}
           </div>
         </div>
         <div>
