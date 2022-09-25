@@ -1,3 +1,4 @@
+import ActionBarComponent from "./ActionBarComponent";
 import CalendarPicker from "./CalendarPicker";
 
 export default function Test() {
@@ -5,7 +6,7 @@ export default function Test() {
     <div className="w-full">
       <div className="p-20">
         <CalendarPicker />
-
+        <ActionBarComponent />
         {/* <DateTimePickerValidation name="meetingDT" /> */}
       </div>
     </div>

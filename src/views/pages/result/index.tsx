@@ -66,7 +66,7 @@ export default function Result() {
                 dataLength={resultData.length}
                 next={fetchMoreData}
                 hasMore={hasMore}
-                loader={<h4>Loading...</h4>}
+                loader={<h4> </h4>}
                 height={700}
               >
                 <Grid container>
@@ -108,7 +108,7 @@ export default function Result() {
             dataLength={resultData.length}
             next={fetchMoreData}
             hasMore={hasMore}
-            loader={<h4>Loading...</h4>}
+            loader={<h4> </h4>}
             height={700}
           >
             <Grid container justifyContent={"center"}>
